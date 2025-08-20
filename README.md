@@ -1,4 +1,4 @@
-# ImageKit Video Shop
+# Reel Upload
 
 A modern Next.js application for managing and selling video content using ImageKit integration. This project provides a full-featured platform with user authentication, video upload capabilities, and payment processing using Razorpay.
 
@@ -7,6 +7,7 @@ A modern Next.js application for managing and selling video content using ImageK
 - 🔐 User Authentication (NextAuth.js)
 - 📹 Video Upload and Management (ImageKit)
 - Private and Public video feature is also added lately..
+- Search a video by its title
 - 🎨 Modern UI with Tailwind CSS and DaisyUI
 - 📱 Fully Responsive Design
 - 🔒 Secure API Routes
@@ -108,12 +109,10 @@ SMTP_PASS=
 
 ## Contributing
 
-NO CONTRIBUTING PLEASE!
+Yes We want to add delete video options and 
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Support
 
-For support, watch youtube video

@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import VideoFeed from "./components/VideoFeed";
 import { IVideo } from "@/models/Video";
-import { apiClient } from "@/lib/api-client";
+//import { apiClient } from "@/lib/api-client";//commenting this line for vrecel error no use of imprting apiClient
 
 export default function Home() {
   const [videos, setVideos] = useState<IVideo[]>([]);

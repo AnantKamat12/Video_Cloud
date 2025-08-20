@@ -1,4 +1,4 @@
-# Reel Upload
+#MY Reels
 
 A modern Next.js application for managing and selling video content using ImageKit integration. This project provides a full-featured platform with user authentication, video upload capabilities, and payment processing using Razorpay.
 
@@ -109,7 +109,7 @@ SMTP_PASS=
 
 ## Contributing
 
-Yes We want to add delete video options and 
+Yes We want to add delete video options and...
 
 ## License
 

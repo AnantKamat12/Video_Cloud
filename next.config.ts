@@ -5,5 +5,6 @@ const nextConfig: NextConfig = {
     domains: ["ik.imagekit.io"],
   },
 };
+//
 
 export default nextConfig;

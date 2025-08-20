@@ -14,7 +14,7 @@ export default function Register() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+// 
     if (password !== confirmPassword) {
       showNotification("Passwords do not match", "error");
       return;

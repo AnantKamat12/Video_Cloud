@@ -23,7 +23,7 @@ export default function FileUpload({
     setError(err.message);
     setUploading(false);
   };
-
+//
   const handleSuccess = (response: IKUploadResponse) => {
     setUploading(false);
     setError(null);

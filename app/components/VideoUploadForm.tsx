@@ -13,12 +13,16 @@ interface VideoFormData {
   description: string;
   videoUrl: string;
   thumbnailUrl: string;
+  // ADDED: private field to the form data type
+  private: boolean;
 }
 
 export default function VideoUploadForm() {
   const [loading, setLoading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const { showNotification } = useNotification();
+  // ADDED: State for the private checkbox
+  const [isPrivate, setIsPrivate] = useState(false);
 
   const {
     register,
@@ -31,6 +35,7 @@ export default function VideoUploadForm() {
       description: "",
       videoUrl: "",
       thumbnailUrl: "",
+      private: false,
     },
   });
 
@@ -52,7 +57,8 @@ export default function VideoUploadForm() {
 
     setLoading(true);
     try {
-      await apiClient.createVideo(data);
+      // ADDED: Include the private status in the data sent to the API
+      await apiClient.createVideo({ ...data, private: isPrivate });
       showNotification("Video published successfully!", "success");
 
       // Reset form after successful submission
@@ -60,6 +66,7 @@ export default function VideoUploadForm() {
       setValue("description", "");
       setValue("videoUrl", "");
       setValue("thumbnailUrl", "");
+      setIsPrivate(false); // Reset the checkbox state
       setUploadProgress(0);
     } catch (error) {
       showNotification(
@@ -119,6 +126,21 @@ export default function VideoUploadForm() {
             />
           </div>
         )}
+      </div>
+      
+      {/* ADDED: Checkbox for private video */}
+      <div className="form-control">
+        <label className="label cursor-pointer justify-start gap-4">
+          <input
+            type="checkbox"
+            className="checkbox checkbox-primary"
+            checked={isPrivate}
+            onChange={(e) => setIsPrivate(e.target.checked)}
+          />
+          <span className="label-text text-base-content">
+            Mark as Private (only visible when logged in)
+          </span>
+        </label>
       </div>
 
       <button

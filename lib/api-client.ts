@@ -14,7 +14,7 @@ class ApiClient {
     options: FetchOptions = {}
   ): Promise<T> {
     const { method = "GET", body, headers = {} } = options;
-
+//
     const defaultHeaders = {
       "Content-Type": "application/json",
       ...headers,

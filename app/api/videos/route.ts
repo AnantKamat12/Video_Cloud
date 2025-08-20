@@ -1,19 +1,29 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "@/lib/auth";// Corrected common path for authOptions
 import { connectToDatabase } from "@/lib/db";
 import Video, { IVideo } from "@/models/Video";
 
 export async function GET() {
   try {
     await connectToDatabase();
-    const videos = await Video.find({}).sort({ createdAt: -1 }).lean();
+    const session = await getServerSession(authOptions);
 
-    if (!videos || videos.length === 0) {
-      return NextResponse.json([], { status: 200 });
+    let query = {};
+
+    // Logic to filter videos based on session
+    if (session) {
+      // Logged-in users see all videos
+      query = {};
+    } else {
+      // Logged-out users only see public videos
+      query = { private: false };
     }
 
-    return NextResponse.json(videos);
+    const videos = await Video.find(query).sort({ createdAt: -1 }).lean();
+    
+// This ensures the response is always { videos: [...] }
+return NextResponse.json({ videos: videos });
   } catch (error) {
     console.error("Error fetching videos:", error);
     return NextResponse.json(
@@ -47,18 +57,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create new video with default values
-    const videoData = {
-      ...body,
-      controls: body.controls ?? true,
-      transformation: {
-        height: 1920,
-        width: 1080,
-        quality: body.transformation?.quality ?? 100,
-      },
-    };
+    // Create a new video object including the private field
+    const newVideo = await Video.create({
+        ...body,
+        private: body.private ?? false, // Saves the private field from the request
+    });
 
-    const newVideo = await Video.create(videoData);
     return NextResponse.json(newVideo);
   } catch (error) {
     console.error("Error creating video:", error);

@@ -1,7 +1,5 @@
-import type { Config } from "tailwindcss";
-import daisyui from "daisyui";
-
-export default {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,16 +7,22 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+      // It's better to remove these custom colors unless you have a specific reason,
+      // as they can override daisyUI's theme colors.
+      // colors: {
+      //   background: "var(--background)",
+      //   foreground: "var(--foreground)",
+      // },
     },
   },
-  plugins: [daisyui],
+  
+  // 1. Make sure daisyui is required here
+  plugins: [require("daisyui")],
+
+  // 2. Configure daisyUI to include BOTH themes
   daisyui: {
-    themes: ["dark"],
-    darkTheme: "dark",
+    themes: ["light", "dark"], // Add "light" so it knows both exist
   },
-  darkMode: "class",
-} satisfies Config;
+
+  // 3. REMOVE the darkMode: "class" line entirely
+};

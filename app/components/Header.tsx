@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
-import { Home, User } from "lucide-react";
+import { Home, User } from "lucide-react"; // Sun and Moon icons removed
 import { useNotification } from "./Notification";
 
+// The theme and onThemeChange props have been removed
 export default function Header() {
   const { data: session } = useSession();
   const { showNotification } = useNotification();
@@ -27,15 +28,18 @@ export default function Header() {
             className="btn btn-ghost text-xl gap-2 normal-case font-bold"
             prefetch={true}
             onClick={() =>
-              showNotification("Welcome to ImageKit ReelsPro", "info")
+              showNotification("Welcome to VIDEO CLOUDS", "info")
             }
           >
             <Home className="w-5 h-5" />
-            ImageKit ReelsPro
+            VIDEO CLOUDS
           </Link>
         </div>
         <div className="flex flex-1 justify-end px-2">
           <div className="flex items-stretch gap-2">
+
+            {/* The theme switcher button has been deleted */}
+
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}

@@ -3,13 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --background: #000000;
+  --background: #4c1d95; /* Deep Purple */
   --foreground: #ffffff;
 }
-
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--background); 
   min-height: 100vh;
 }
 

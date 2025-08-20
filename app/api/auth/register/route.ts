@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
         { error: "Email and password are required" },
         { status: 400 }
       );
-    }
+    }//
 
     await connectToDatabase();
 

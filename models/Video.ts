@@ -12,6 +12,7 @@ export interface IVideo {
   videoUrl: string;
   thumbnailUrl: string;
   controls?: boolean;
+  private?: boolean; // ADDED: For TypeScript type safety
   transformation?: {
     height: number;
     width: number;
@@ -26,6 +27,7 @@ const videoSchema = new Schema<IVideo>(
     videoUrl: { type: String, required: true },
     thumbnailUrl: { type: String, required: true },
     controls: { type: Boolean, default: true },
+    private: { type: Boolean, default: false }, // ADDED: For the database
     transformation: {
       height: { type: Number, default: VIDEO_DIMENSIONS.height },
       width: { type: Number, default: VIDEO_DIMENSIONS.width },

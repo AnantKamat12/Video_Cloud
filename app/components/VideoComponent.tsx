@@ -31,7 +31,7 @@ export default function VideoComponent({ video }: { video: IVideo }) {
           href={`/videos/${video._id}`}
           className="hover:opacity-80 transition-opacity"
         >
-          <h2 className="card-title text-lg">{video.title}</h2>
+        <h2 className="card-title text-lg">{video.title}</h2>
         </Link>
 
         <p className="text-sm text-base-content/70 line-clamp-2">

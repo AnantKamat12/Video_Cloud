@@ -20,8 +20,6 @@ A modern Next.js application for managing and selling video content using ImageK
 - **Authentication**: NextAuth.js, JWT
 - **Database**: MongoDB with Mongoose
 - **File Storage**: ImageKit
-- **Payment**: Razorpay
-- **Email**: Nodemailer
 - **Form Handling**: React Hook Form
 
 ## Prerequisites
